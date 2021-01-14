@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="160dp"
+    android:id="@+id/sscardview"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:layout_margin="7dp">
+
+
+    <ImageView
+        android:id="@+id/sscardresmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/kasapcard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sscardadı"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/sscardresmi"
+        android:layout_alignEnd="@+id/sscardresmi"
+        android:layout_alignBottom="@+id/sscardresmi"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10sp"
+        android:text="Kasap"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sscardresmi"
+        app:layout_constraintEnd_toEndOf="@+id/sscardresmi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sscardresmi"
+        app:layout_constraintVertical_bias="0.89" />
+
+
+</androidx.cardview.widget.CardView>

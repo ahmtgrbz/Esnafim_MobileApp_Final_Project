@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/anamenu"
+        android:title="Anamenu"
+        android:icon="@drawable/hometest"/>
+    <item android:id="@+id/ara"
+        android:title="Ara"
+        android:icon="@drawable/ara"/>
+    <item android:id="@+id/sepet"
+        android:title="Sepet"
+        android:icon="@drawable/sepet"/>
+    <item android:id="@+id/destek"
+        android:title="Destek"
+        android:icon="@drawable/destek"/>
+    <item android:id="@+id/diger"
+        android:title="Diğer"
+        android:icon="@drawable/diger"/>
+</menu>

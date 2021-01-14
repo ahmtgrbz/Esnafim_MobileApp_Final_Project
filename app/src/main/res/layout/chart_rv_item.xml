@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@drawable/chartbg">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/charturunresmi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/dnabonf"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <TextView
+            android:id="@+id/charturunadi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/charturunresmi"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Dana Bonfile"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kg"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/charturunadi"
+            app:layout_constraintTop_toBottomOf="@+id/charturunadi" />
+
+        <Spinner
+            android:id="@+id/quantitySpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            android:entries="@array/quantity_string_array"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            />
+
+
+        <ImageButton
+            android:id="@+id/deleteProductButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/quantitySpinner"
+            app:layout_constraintStart_toEndOf="@+id/quantitySpinner"
+            app:layout_constraintTop_toTopOf="@+id/quantitySpinner"
+            app:srcCompat="@drawable/dltitem" />
+
+        <TextView
+            android:id="@+id/chartfiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:text="1234 ₺"
+            app:layout_constraintVertical_bias="0.35"/>
+
+        <TextView
+            android:id="@+id/teslimatsrs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teslimat Süresi: 20-30 dk"
+            app:layout_constraintHorizontal_bias="0"
+            android:textSize="10sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/charturunadi"
+            app:layout_constraintStart_toStartOf="@+id/charturunadi"
+            app:layout_constraintTop_toBottomOf="@+id/charturunadi" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

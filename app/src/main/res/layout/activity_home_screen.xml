@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".activities.home_screen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/Hepsinigör2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Hepsini Gör>"
+            android:textColor="@color/black"
+            android:textSize="11dp"
+            app:layout_constraintBottom_toTopOf="@+id/searchsliders"
+            app:layout_constraintEnd_toEndOf="@+id/searchsliders"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="@+id/searchsliders"
+            app:layout_constraintTop_toBottomOf="@+id/spetslider"
+            app:layout_constraintVertical_bias="0" />
+
+        <ImageView
+            android:id="@+id/profilepic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/profilepic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <ImageView
+            android:id="@+id/locationpointer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="45sp"
+            android:src="@drawable/location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <ImageView
+            android:id="@+id/esnafimhome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35sp"
+            android:src="@drawable/homeesnafim"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/searchbar"
+            android:fontFamily="@font/montserrat"
+            android:hint="Ürün, Marka veya Esnaf arayın."
+            android:paddingLeft="50dp"
+            android:paddingTop="13dp"
+            android:paddingBottom="10dp"
+            android:singleLine="true"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/urunleryorumlarhakkında"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintWidth_percent=".7" />
+
+        <ListView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <ViewFlipper
+            android:id="@+id/Banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineer2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/spetslider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchsliders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sonsiparişler">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/urunleryorumlarhakkında"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/esnafimhome"
+            app:layout_constraintVertical_bias="0.01">
+
+            <TextView
+                android:id="@+id/Urunler"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="65dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Kasap"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/Yorumlar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Bakkal"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/Hakkında"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Fırın"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/Kırtasiye"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="60dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Kırtasiye"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lineer2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/Kampanyalar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="65dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Kampanyalar"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sanaozel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Sana Özel"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/gununindirimleri"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Günün İndirimleri"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sonsiparişler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Son Siparişler"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/spetslider"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/searchsliders"
+            app:layout_constraintTop_toBottomOf="@+id/spetslider" />
+
+        <TextView
+            android:id="@+id/Kategoriler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Kategoriler"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/spetslider"
+            app:layout_constraintEnd_toEndOf="@+id/spetslider"
+            app:layout_constraintHorizontal_bias="0"
+
+            app:layout_constraintStart_toStartOf="@+id/spetslider"
+            app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+        <TextView
+            android:id="@+id/Hepsinigör1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Hepsini Gör>"
+            android:textColor="@color/black"
+            android:textSize="11dp"
+            app:layout_constraintBottom_toTopOf="@+id/spetslider"
+            app:layout_constraintEnd_toEndOf="@+id/spetslider"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Banner" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/menubg"
+            app:itemTextColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1"
+            app:menu="@menu/bottom_new_menu" />
+
+        <TextView
+            android:id="@+id/bolge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="Kadıköy"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/locationpointer"
+            app:layout_constraintStart_toEndOf="@+id/locationpointer"
+            app:layout_constraintTop_toTopOf="@+id/locationpointer" />
+
+        <TextView
+            android:id="@+id/AD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="AA"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/profilepic"
+            app:layout_constraintEnd_toEndOf="@+id/profilepic"
+            app:layout_constraintStart_toStartOf="@+id/profilepic"
+            app:layout_constraintTop_toTopOf="@+id/profilepic" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

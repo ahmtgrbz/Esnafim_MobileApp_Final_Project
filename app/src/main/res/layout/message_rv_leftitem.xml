@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <ImageView
+        android:id="@+id/righttextbg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rightbuble"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/lefttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Deneme için yazılmış text"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/righttextbg"
+        app:layout_constraintEnd_toEndOf="@+id/righttextbg"
+        app:layout_constraintStart_toStartOf="@+id/righttextbg"
+        app:layout_constraintTop_toTopOf="@+id/righttextbg" />
+
+    <TextView
+        android:id="@+id/wholeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canlı Destek:"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintBottom_toTopOf="@+id/lefttext"
+        app:layout_constraintEnd_toEndOf="@+id/lefttext"
+        app:layout_constraintStart_toStartOf="@+id/lefttext" />
+</androidx.constraintlayout.widget.ConstraintLayout>
