@@ -11,6 +11,8 @@ package com.example.esnafim.Adapters;
 
         import androidx.annotation.NonNull;
         import androidx.recyclerview.widget.RecyclerView;
+
+        import com.example.esnafim.DatabaseAccess;
         import com.example.esnafim.R;
         import com.example.esnafim.models.ProductlistRvmodel;
 
@@ -18,7 +20,7 @@ package com.example.esnafim.Adapters;
         import java.util.ArrayList;
 
 public class ProductSquarelistRvAdapter extends RecyclerView.Adapter<ProductSquarelistRvAdapter.ProductlistRVViewHolder> {
-
+    DatabaseAccess databaseAccess;
     ArrayList<ProductlistRvmodel> mItems;
     LayoutInflater inflater;
     static ArrayList<ProductlistRvmodel> chartItems=new ArrayList<ProductlistRvmodel>();
@@ -32,6 +34,7 @@ public class ProductSquarelistRvAdapter extends RecyclerView.Adapter<ProductSqua
         this.context=context;
         inflater =LayoutInflater.from(context);
         this.mItems=data;
+
     }
 
     @NonNull
@@ -53,16 +56,20 @@ public class ProductSquarelistRvAdapter extends RecyclerView.Adapter<ProductSqua
     public int getItemCount() {
         return mItems.size();
     }
+
     public void deleteItem(int position){
+        databaseAccess = new DatabaseAccess(context);
+        databaseAccess.open();
+        databaseAccess.sepetigetir("Onur").size();
         try {
-            if(chartItems.size()>0) {
-                if(chartItems.contains(chartItems.get(position))){
-                    String urnadı=chartItems.get(position).getBaslik();
-                    chartItems.remove(position);
-                    Toast.makeText(context, "Sepetten "+urnadı+" adlı ürünü sildiniz", Toast.LENGTH_SHORT).show();}
-                else {
-                    Toast.makeText(context, "Seçilen ürün sepette değil", Toast.LENGTH_SHORT).show();
-                }
+            if(databaseAccess.sepetigetir("Onur").size()>0) {
+                boolean a =databaseAccess.sepettenkaldır(mItems.get(position),"Onur");
+                    databaseAccess.close();
+                    if (a == true){
+                        Toast.makeText(context, "Sepetten "+ mItems.get(position).getBaslik()+" adlı ürünü sildiniz", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context, "Beklenmedik Hata Sepetten ürün kaldırılamadı ", Toast.LENGTH_SHORT).show();
+                    }
             }else
                 Toast.makeText(context, " Sepetiniz boş lütfen ürün ekleyin ", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
@@ -71,10 +78,15 @@ public class ProductSquarelistRvAdapter extends RecyclerView.Adapter<ProductSqua
 
 
     }
-    public void addItem(int position,ProductlistRvmodel urun){
-        chartItems.add(position,urun);
-        String urnadı=chartItems.get(position).getBaslik();
-        Toast.makeText(context, "Sepette"+urnadı+"adlı ürünü eklediniz", Toast.LENGTH_SHORT).show();
+    public void addItem(int position) {
+
+        databaseAccess = new DatabaseAccess(context);
+        databaseAccess.open();
+        boolean a = databaseAccess.sepetekele(mItems.get(position), "Onur");
+        databaseAccess.close();
+        if (a == true) {
+            Toast.makeText(context, "Sepette" + mItems.get(position).getBaslik() + "adlı ürünü eklediniz", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public class ProductlistRVViewHolder extends RecyclerView.ViewHolder {
@@ -103,7 +115,7 @@ public class ProductSquarelistRvAdapter extends RecyclerView.Adapter<ProductSqua
             chartaekleresmi.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    addItem(positiondeğeri,chartiçinkopya);
+                    addItem(positiondeğeri);
                 }
             });
         }

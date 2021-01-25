@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.esnafim.Adapters.ChartRvAdapter;
+import com.example.esnafim.DatabaseAccess;
 import com.example.esnafim.R;
 import com.example.esnafim.models.ProductlistRvmodel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class chart extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private RecyclerView recyclerView;
+    DatabaseAccess databaseAccess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,29 +28,17 @@ public class chart extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.sepet);
+        databaseAccess = new DatabaseAccess(this);
+        databaseAccess.open();
 
-        final ArrayList<ProductlistRvmodel> items = new ArrayList<>();
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Bonfile","100 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Et","60 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Antirikot","100 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Bonfile","100 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Et","60 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Antirikot","100 TL/Kg"));
-        items.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
 
+        final ArrayList<ProductlistRvmodel> items = databaseAccess.sepetigetir("Onur");
         recyclerView = (RecyclerView) findViewById(R.id.spetslider);
         ChartRvAdapter ChartRvAdapter = new ChartRvAdapter(this,items);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(ChartRvAdapter);
-
-
-
-
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -7,10 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.esnafim.Adapters.KategoriRvAdapter;
 import com.example.esnafim.Adapters.MessageRvAdapter;
+import com.example.esnafim.DatabaseAccess;
 import com.example.esnafim.R;
 import com.example.esnafim.models.KategoriRvModel;
 import com.example.esnafim.models.MessageRvModel;
@@ -19,21 +24,39 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class livechat extends AppCompatActivity {
+    DatabaseAccess databaseAccess;
     private BottomNavigationView bottomNavigationView;
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
+    MessageRvAdapter MessageRvAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livechat);
 
-        final ArrayList<MessageRvModel> item = new ArrayList<>();
-        item.add(new MessageRvModel("Deneme","Dummy Deneme"));
-        item.add(new MessageRvModel("Database ile tekrar yapılacak","Dummy Deneme"));
+        databaseAccess = new DatabaseAccess(this);
+        databaseAccess.open();
+        final ArrayList<MessageRvModel> item =databaseAccess.mesajlariGoster("admin","sistem");
+        databaseAccess.close();
+        //Log.e("database", item.size()+" boyut");
+        /*ArrayList<MessageRvModel> item = new ArrayList<MessageRvModel>();
+        item.add(new MessageRvModel("admin","sistem","denemecis",0));*/
 
         recyclerView = findViewById(R.id.chatt);
-        MessageRvAdapter MessageRvAdapter = new MessageRvAdapter(this,item);
+        MessageRvAdapter = new MessageRvAdapter(this,item);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(MessageRvAdapter);
+
+        final EditText text1 = findViewById(R.id.writedtext);
+        ImageView send = findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseAccess.open();
+                databaseAccess.mesajGonder("Onur","admin",text1.getText().toString());
+                text1.setText("");
+                startActivity(new Intent(getApplicationContext(),livechat.class));
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.destek);

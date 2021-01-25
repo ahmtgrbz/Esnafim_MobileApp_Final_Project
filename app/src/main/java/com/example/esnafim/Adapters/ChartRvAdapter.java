@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.esnafim.DatabaseAccess;
 import com.example.esnafim.R;
 import com.example.esnafim.models.ProductlistRvmodel;
 
@@ -22,7 +24,7 @@ public class ChartRvAdapter extends RecyclerView.Adapter<ChartRvAdapter.Productl
     ArrayList<ProductlistRvmodel> mItems;
     LayoutInflater inflater;
     Context context;
-
+    DatabaseAccess databaseAccess;
     public  ChartRvAdapter(Context context, ArrayList<ProductlistRvmodel> data){
         this.context=context;
         inflater =LayoutInflater.from(context);
@@ -50,11 +52,17 @@ public class ChartRvAdapter extends RecyclerView.Adapter<ChartRvAdapter.Productl
     }
     public void deleteItem(int position){
         try {
+            databaseAccess = new DatabaseAccess(context);
+            databaseAccess.open();
+            boolean a = databaseAccess.sepettenkaldır(mItems.get(position),"Onur");
+            databaseAccess.close();
             String adı = mItems.get(position).getBaslik();
             mItems.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position,mItems.size());
-            Toast.makeText(context, adı+" adlı ürün sepetten kaldırıldı ", Toast.LENGTH_SHORT).show();
+            if (a == true){Toast.makeText(context, adı+" adlı ürün sepetten kaldırıldı ", Toast.LENGTH_SHORT).show();}
+            else{Toast.makeText(context, "Ürün sepetten kaldırılırken hata ile karşılaşıldı ", Toast.LENGTH_SHORT).show();}
+
         } catch (Exception e) {
             Toast.makeText(context, "Seçilen ürün sepette değil", Toast.LENGTH_SHORT).show();
         }

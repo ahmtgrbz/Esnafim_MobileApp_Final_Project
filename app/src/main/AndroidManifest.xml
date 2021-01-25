@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.livechat"></activity>
-        <activity android:name=".activities.chart"></activity>
-        <activity android:name=".activities.Detailmenu"></activity>
-        <activity android:name=".activities.home_screen" ></activity>
-        <activity android:name=".activities.IntroductoryActivity">
+        <activity android:name=".activities.livechat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.chart"></activity>
+        <activity android:name=".activities.Detailmenu"></activity>
+        <activity android:name=".activities.home_screen" ></activity>
+        <activity android:name=".activities.IntroductoryActivity"></activity>
         <activity android:name=".activities.SearchMenu" ></activity>
 
         <meta-data

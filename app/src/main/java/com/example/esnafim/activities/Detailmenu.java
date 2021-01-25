@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.esnafim.Adapters.ProductSquarelistRvAdapter;
 import com.example.esnafim.Adapters.ProductlistRvAdapter;
+import com.example.esnafim.DatabaseAccess;
 import com.example.esnafim.R;
 import com.example.esnafim.models.ProductlistRvmodel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,18 +26,10 @@ public class Detailmenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailmenu);
-
-        final ArrayList<ProductlistRvmodel> dana = new ArrayList<>();
-        dana.add(new ProductlistRvmodel(R.drawable.product1, "Dana Antirikot","100 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product2, "Dana Kontrfile ","80 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product3, "Dana Burger Köftesi","60 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product1, "Dana Antirikot","100 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product2, "Dana Kontrfile ","80 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product3, "Dana Burger Köftesi","60 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product1, "Dana Antirikot","100 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product2, "Dana Kontrfile ","80 TL/Kg"));
-        dana.add(new ProductlistRvmodel(R.drawable.product3, "Dana Burger Köftesi","60 TL/Kg"));
-
+        DatabaseAccess databaseAccess = new DatabaseAccess(this);
+        databaseAccess.open();
+        final ArrayList<ProductlistRvmodel> dana = databaseAccess.urunListele(1,"yatay","Dana");
+        databaseAccess.close();
         recyclerView = (RecyclerView) findViewById(R.id.danaurunrvlistslider);
         ProductlistRvAdapter productlistRvAdapter = new ProductlistRvAdapter(this,dana);
         recyclerView.setAdapter(productlistRvAdapter);
@@ -43,15 +37,9 @@ public class Detailmenu extends AppCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-        final ArrayList<ProductlistRvmodel> kuzu = new ArrayList<>();
-        kuzu.add(new ProductlistRvmodel(R.drawable.product1, "Kuzu Antirikot","42 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product2, "Kuzu Kontrfile ","54 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product3, "Kuzu Burger Köftesi","67 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product3, "Karışık Kıyma","89 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product1, "Kuzu Antirikot","89 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product2, "Kuzu Kontrfile ","80 TL/Kg"));
-        kuzu.add(new ProductlistRvmodel(R.drawable.product3, "Kuzu Burger Köftesi","60 TL/Kg"));
+        databaseAccess.open();
+        final ArrayList<ProductlistRvmodel> kuzu = databaseAccess.urunListele(1,"yatay","Kuzu");
+        databaseAccess.close();
 
         recyclerView2 = (RecyclerView) findViewById(R.id.kuzuurunlerislider);
         ProductlistRvAdapter productlistRvAdapter2 = new ProductlistRvAdapter(this,kuzu);
@@ -60,13 +48,9 @@ public class Detailmenu extends AppCompatActivity {
         linearLayoutManager2.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView2.setLayoutManager(linearLayoutManager2);
 
-        final ArrayList<ProductlistRvmodel> sarkuteri = new ArrayList<>();
-        sarkuteri.add(new ProductlistRvmodel(R.drawable.product1, "Sucuk","100 TL/Kg"));
-        sarkuteri.add(new ProductlistRvmodel(R.drawable.product2, "Salam ","80 TL/Kg"));
-        sarkuteri.add(new ProductlistRvmodel(R.drawable.product3, "Pastırma","60 TL/Kg"));
-
-
-
+        databaseAccess.open();
+        final ArrayList<ProductlistRvmodel> sarkuteri = databaseAccess.urunListele(1,"yatay","sarkuteri");
+        databaseAccess.close();
         recyclerView3 = (RecyclerView) findViewById(R.id.sarkuterislider);
         ProductlistRvAdapter productlistRvAdapter3= new ProductlistRvAdapter(this,sarkuteri);
         recyclerView3.setAdapter(productlistRvAdapter3);
@@ -74,21 +58,13 @@ public class Detailmenu extends AppCompatActivity {
         linearLayoutManager3.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView3.setLayoutManager(linearLayoutManager3);
 
-
-        final ArrayList<ProductlistRvmodel> Square = new ArrayList<>();
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Bonfile","100 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Et","60 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Antirikot","100 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.et, "Dana Kontrfile ","80 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.et, "Dana Burger Köftesi","60 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Antirikot","100 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Kontrfile ","80 TL/Kg"));
-        Square.add(new ProductlistRvmodel(R.drawable.dnabonf, "Dana Burger Köftesi","60 TL/Kg"));
+        databaseAccess.open();
+        final ArrayList<ProductlistRvmodel> Square = databaseAccess.urunListele(1,"kare","kare");
+        databaseAccess.close();
 
         recyclerView4 = (RecyclerView) findViewById(R.id.spetslider);
-        ProductSquarelistRvAdapter ProductSquarelistRvAdapter = new ProductSquarelistRvAdapter(this,Square);
-        recyclerView4.setAdapter(ProductSquarelistRvAdapter);
+        ProductSquarelistRvAdapter productS = new ProductSquarelistRvAdapter(this,Square);
+        recyclerView4.setAdapter(productS);
         LinearLayoutManager linearLayoutManager4 = new LinearLayoutManager(this);
         linearLayoutManager4.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView4.setLayoutManager(linearLayoutManager4);

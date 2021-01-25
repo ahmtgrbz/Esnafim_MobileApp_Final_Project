@@ -4,27 +4,49 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MessageRvModel {
-    String mesaj1,mesaj2;
+    String mesaj1;
+    String gönderen;
+    String alici;
+    int mesajsirasi;
 
-    public String getMesaj1() {
-        return mesaj1;
+    public MessageRvModel(String gönderen, String alici,String mesaj1, int mesajsirasi) {
+        this.mesaj1 = mesaj1;
+        this.gönderen = gönderen;
+        this.alici = alici;
+        this.mesajsirasi = mesajsirasi;
     }
 
     public void setMesaj1(String mesaj1) {
         this.mesaj1 = mesaj1;
     }
 
-    public String getMesaj2() {
-        return mesaj2;
+    public void setGönderen(String gönderen) {
+        this.gönderen = gönderen;
     }
 
-    public void setMesaj2(String mesaj2) {
-        this.mesaj2 = mesaj2;
+    public void setAlici(String alici) {
+        this.alici = alici;
     }
 
-    public MessageRvModel(String mesaj1, String mesaj2) {
-        this.mesaj1 = mesaj1;
-        this.mesaj2 = mesaj2;
+    public void setMesajsirasi(int mesajsirasi) {
+        this.mesajsirasi = mesajsirasi;
+    }
+
+    public String getMesaj1() {
+        return mesaj1;
+    }
+
+    public String getGönderen() {
+        return gönderen;
+    }
+
+    public String getAlici() {
+        return alici;
+    }
+
+    public int getMesajsirasi() {
+        return mesajsirasi;
     }
 }
+
 
